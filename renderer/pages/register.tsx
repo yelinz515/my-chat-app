@@ -38,6 +38,7 @@ const onFinish = async(values: any) => {
 
     //create empty user chats on firestore
     await setDoc(doc(db, "userChats", res.user.uid), {});
+    // await setDoc(doc(db, "groupChats",  res.user.uid), { members: [] })
     
     alert("Registered/Saved successfully.")
     router.push('./home')
