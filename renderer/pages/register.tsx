@@ -1,11 +1,10 @@
-import { Button, Form, Input, Layout, Typography, Upload } from 'antd';
+import { Button, Form, Input, Layout, Typography } from 'antd';
 import Link from 'next/link';
 import React from 'react'
-import { UserOutlined, KeyOutlined, PlusOutlined } from '@ant-design/icons';
+import { UserOutlined, KeyOutlined } from '@ant-design/icons';
 import {createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase/firebase";
 import { useRouter } from 'next/router';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import { doc, setDoc } from "firebase/firestore"
 
 function Register() {
