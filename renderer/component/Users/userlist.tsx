@@ -16,6 +16,11 @@ const userList: React.CSSProperties = {
   columnGap: 10,
 }
 
+const liner: React.CSSProperties = {
+  borderTopWidth: 1,
+  borderStyle: "solid",
+  color: "white"
+}
 
 function UserList() {
     const { user } = useContext(AuthContext);
@@ -37,7 +42,7 @@ function UserList() {
         user.uid && getChats();
       },[user.uid])
   
-      // console.log("chats", Object.entries(chats).length)
+      console.log("chats", Object.entries(chats).map((chat) => chat[1].userInfo))
 
     const handleSelect = (user: any) => {
         dispatch({type: "CHANGE_USER", payload: user})
@@ -53,6 +58,7 @@ function UserList() {
             </div>
         </div>
         ))}
+        <div style={liner}></div>
     </>
   )
 }

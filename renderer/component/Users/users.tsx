@@ -6,7 +6,7 @@ import { db } from '../../firebase/firebase';
 import { AuthContext } from '../../firebase/AuthContext';
 import { Input } from 'antd';
 import UserList from './userlist';
-// import GroupChattings from '../GroupChattings/groupchat';
+import GroupChattings from '../GroupChattings/groupchat';
 
 const userList: React.CSSProperties = {
     display: "flex",
@@ -15,7 +15,7 @@ const userList: React.CSSProperties = {
     marginBottom: 12,
     alignItems: "center",
     columnGap: 10,
-} 
+}
 
 interface UserList {
     uid: string,
@@ -53,13 +53,12 @@ function Users() {
 
     const handleSelect = async () => {
     const combinedId = user.uid > user2.uid ? user.uid + user2.uid : user2.uid + user.uid;
-    console.log("combinedId", combinedId)
     try{
         const res = await getDoc(doc(db, "chats", combinedId));
 
         if(!res.exists()){
             // chats 컬렉션 안에 체팅 생성
-            await setDoc(doc(db, "chats", combinedId), { message: [] })
+            await setDoc(doc(db, "chats", combinedId), { messages: [] })
 
             //  유저 채팅 생성
             await updateDoc(doc(db, "userChats", user2.uid), {
@@ -78,9 +77,7 @@ function Users() {
                 [combinedId + ".date"]: serverTimestamp(),
             });
         }
-    } catch (error) {
-        alert(error.message)
-    }
+    } catch (err) {}
 
     setUser2(null);
     setUsername("")
@@ -103,8 +100,8 @@ function Users() {
                 </div>
             </div>
         )}
-        {/* <GroupChattings /> */}
         <UserList />
+        <GroupChattings />
     </>
   )
 }

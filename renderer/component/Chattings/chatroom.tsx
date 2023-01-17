@@ -12,6 +12,8 @@ function ChatRoom() {
     } = Layout;
 
     const { data } = useContext(ChatContext)
+
+    // console.log("data",data.user)
     
   return (
     <Layout>

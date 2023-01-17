@@ -29,6 +29,8 @@ function Messages() {
     const { data } = useContext(ChatContext)
     const { user } = useContext(AuthContext);
 
+    console.log("Data", data)
+
     const [messages, setMessages] = useState([])
     const [text, setText] = useState("")
 
