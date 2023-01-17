@@ -1,12 +1,14 @@
 import React from 'react';
-import Register from './Register';
+import Login from './login';
+
 
 function Home() {
+
   return (
     <React.Fragment>
-    <Register />
+      <Login />
     </React.Fragment>
   );
-}
+};
 
 export default Home;
